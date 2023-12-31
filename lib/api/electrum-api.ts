@@ -111,7 +111,7 @@ export class ElectrumApi implements ElectrumApiInterface {
         return new Promise((resolve, reject) => {
             let intervalId: any;
             const checkForUtxo = async () => {
-                console.log('...');
+                console.log('...checkForUtxo...');
                 try {
                     const response: any = await this.getUnspentAddress(address).catch((e) => {
                         console.error(e);
@@ -145,7 +145,7 @@ export class ElectrumApi implements ElectrumApiInterface {
                     clearInterval(intervalId);
                 }
             };
-            intervalId = setInterval(checkForUtxo, intervalSeconds * 1000);
+            intervalId = setInterval(checkForUtxo, intervalSeconds * 300);
         });
     }
 
